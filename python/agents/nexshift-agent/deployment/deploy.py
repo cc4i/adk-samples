@@ -43,6 +43,9 @@ load_dotenv(PROJECT_ROOT / ".env")
 # Default deployment location from env
 DEFAULT_LOCATION = os.environ.get("AGENT_ENGINE_LOCATION", "us-central1")
 GOOGLE_CLOUD_LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "global")
+GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY=os.environ.get("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "TRUE")
+OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=os.environ.get("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "TRUE")
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -153,6 +156,8 @@ def deploy_agent(
         "extra_packages": extra_packages,
         "env_vars": {
             "GOOGLE_CLOUD_LOCATION": GOOGLE_CLOUD_LOCATION,
+            "GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY": GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY,
+            "OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT": OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT,
         },
         "resource_limits": {
             "cpu": "8",
