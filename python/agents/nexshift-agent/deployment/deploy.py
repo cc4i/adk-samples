@@ -43,8 +43,12 @@ load_dotenv(PROJECT_ROOT / ".env")
 # Default deployment location from env
 DEFAULT_LOCATION = os.environ.get("AGENT_ENGINE_LOCATION", "us-central1")
 GOOGLE_CLOUD_LOCATION = os.environ.get("GOOGLE_CLOUD_LOCATION", "global")
-GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY=os.environ.get("GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "TRUE")
-OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=os.environ.get("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "TRUE")
+GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY = os.environ.get(
+    "GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY", "TRUE"
+)
+OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT = os.environ.get(
+    "OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "TRUE"
+)
 
 
 logging.basicConfig(level=logging.INFO)
@@ -265,7 +269,10 @@ def list_agents(project: str, location: str):
 
 
 def test_agent(
-    project: str, location: str, message: str | None = None, resource_name: str | None = None
+    project: str,
+    location: str,
+    message: str | None = None,
+    resource_name: str | None = None,
 ):
     """Test a deployed agent with a sample query."""
 
